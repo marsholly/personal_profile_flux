@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Dialog, FlatButton, TextField, RadioButton, RadioButtonGroup, DatePicker, Checkbox } from 'material-ui';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
@@ -16,9 +16,11 @@ const styles = {
   },
 };
 
-const NewProfile = React.createClass({
-  getInitialState() {
-    return {
+export default class NewProfile extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       open: false,
       birthday: null,
       name: '',
@@ -29,15 +31,22 @@ const NewProfile = React.createClass({
       bio: '',
       pic_url: ''
     }
-  },
+
+    this.handleOpen =  this.handleOpen.bind(this);
+    this.handleClose =  this.handleClose.bind(this);
+    this.getSports =  this.getSports.bind(this);
+    this._onSubmit =  this._onSubmit.bind(this);
+    this.birthdayChange =  this.birthdayChange.bind(this);
+    this.getGender =  this.getGender.bind(this);
+  }
 
   handleOpen() {
     this.setState({ open: true });
-  },
+  }
 
   handleClose() {
     this.setState({ open: false });
-  },
+  }
 
   getSports(e, checked) {
     let favoriteSport = e.target.value;
@@ -57,7 +66,7 @@ const NewProfile = React.createClass({
         })
       }
     }
-  },
+  }
 
   _onSubmit() {
     let { name, birthday, gender, email, phone, sports, bio, pic_url } =this.state;
@@ -71,17 +80,18 @@ const NewProfile = React.createClass({
       bio: bio,
       pic_url: pic_url
     }
-    console.log('profile:', profile);
-  },
+
+
+  }
 
   birthdayChange( event, date ) {
     this.setState({ birthday: date });
-  },
+  }
 
   getGender(e) {
     let gender = e.target.value;
     this.setState({ gender });
-  },
+  }
 
   render() {
     const actions = [
@@ -140,6 +150,4 @@ const NewProfile = React.createClass({
       </div>
     )
   }
-});
-
-export default NewProfile;
+};

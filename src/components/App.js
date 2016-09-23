@@ -1,20 +1,24 @@
-import React from 'react';
+import  React, { Component } from 'react';
 import { MuiThemeProvider } from 'material-ui';
 import NewProfile from './NewProfile';
 
-const App = React.createClass({
-  getInitialState() {
-    return {
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       profile: []
     }
-  },
+    this.getNewProfile = this.getNewProfile.bind(this);
+  }
+
+  getNewProfile(newProfile) {}
 
   render() {
     return (
       <MuiThemeProvider>
         <div className="container">
           <h1 className="text-center">Personal Profile</h1>
-          <NewProfile />
+          <NewProfile getNewProfile={this.getNewProfile}/>
           <hr/>
           <div className="row">
             <div className="col-md-4">
@@ -28,6 +32,4 @@ const App = React.createClass({
       </MuiThemeProvider>
     )
   }
-});
-
-export default App;
+};

@@ -93,7 +93,7 @@ export default class NewProfile extends Component {
       bio: '',
       pic_url: ''
     });
-    this.handleClose;
+    this.handleClose();
   }
 
   birthdayChange( event, date ) {

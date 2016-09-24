@@ -1,6 +1,7 @@
 import  React, { Component } from 'react';
 import { MuiThemeProvider } from 'material-ui';
 import NewProfile from './NewProfile';
+import ProfileActions from '../actions/ProfileActions'
 
 export default class App extends Component {
   constructor(props) {
@@ -8,17 +9,19 @@ export default class App extends Component {
     this.state = {
       profile: []
     }
-    this.getNewProfile = this.getNewProfile.bind(this);
+    this.addNewProfile = this.addNewProfile.bind(this);
   }
 
-  getNewProfile(newProfile) {}
+  addNewProfile(newProfile) {
+    ProfileActions.createProfile(newProfile);
+  }
 
   render() {
     return (
       <MuiThemeProvider>
         <div className="container">
           <h1 className="text-center">Personal Profile</h1>
-          <NewProfile getNewProfile={this.getNewProfile}/>
+          <NewProfile addNewProfile={this.addNewProfile}/>
           <hr/>
           <div className="row">
             <div className="col-md-4">

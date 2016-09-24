@@ -70,7 +70,7 @@ export default class NewProfile extends Component {
 
   _onSubmit() {
     let { name, birthday, gender, email, phone, sports, bio, pic_url } =this.state;
-    let profile = {
+    let newProfile = {
       name: name,
       birthday: birthday,
       gender: gender,
@@ -79,9 +79,21 @@ export default class NewProfile extends Component {
       sports: sports,
       bio: bio,
       pic_url: pic_url
-    }
+    };
 
+    this.props.addNewProfile(newProfile);
 
+    this.setState({
+      birthday: null,
+      name: '',
+      gender: '',
+      email: '',
+      phone: '',
+      sports: [],
+      bio: '',
+      pic_url: ''
+    });
+    this.handleClose;
   }
 
   birthdayChange( event, date ) {

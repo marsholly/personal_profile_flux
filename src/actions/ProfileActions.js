@@ -6,6 +6,12 @@ const ProfileActions = {
       type: 'CREATE_PROFILE',
       payload: { profile }
     })
+  },
+  updateProfile(profile) {
+    AppDispatcher.dispatch({
+      type: 'UPDATE_PROFILE',
+      payload: { profile }
+    })
   }
 }
 

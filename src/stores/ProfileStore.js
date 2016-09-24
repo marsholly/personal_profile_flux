@@ -14,6 +14,11 @@ class ProfileStore extends EventEmitter {
           _profile.push(profile);
           this.emit('CHANGE');
           break;
+        case 'UPDATE_PROFILE':
+          let updateProfile = action.payload.profile;
+          _profile[0] = updateProfile;
+          this.emit('CHANGE');
+          break;
       }
     });
   }

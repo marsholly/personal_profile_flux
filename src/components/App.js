@@ -13,6 +13,7 @@ export default class App extends Component {
     }
     this.addNewProfile = this.addNewProfile.bind(this);
     this._onChange = this._onChange.bind(this);
+    this.updateProfile = this.updateProfile.bind(this);
   }
 
   componentWillMount() {
@@ -33,6 +34,10 @@ export default class App extends Component {
     ProfileActions.createProfile(newProfile);
   }
 
+  updateProfile(editProfile) {
+    ProfileActions.updateProfile(editProfile);
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -40,7 +45,7 @@ export default class App extends Component {
           <h1 className="text-center">Personal Profile</h1>
           <NewProfile addNewProfile={this.addNewProfile}/>
           <hr/>
-          <ProfileBoard profile={this.state.profile}/>
+          <ProfileBoard profile={this.state.profile} updateProfile={this.updateProfile}/>
         </div>
       </MuiThemeProvider>
     )

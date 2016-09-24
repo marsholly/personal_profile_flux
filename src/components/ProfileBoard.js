@@ -5,7 +5,6 @@ import moment from 'moment';
 import { Dialog, FlatButton, TextField, RadioButton, RadioButtonGroup, DatePicker, Checkbox } from 'material-ui';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
-import ProfileActions from '../actions/ProfileActions';
 
 const styles = {
   block: {
@@ -34,7 +33,7 @@ export default class ProfileBoard extends Component {
       editEmail: '',
       editPhone: '',
       editSports: [],
-      editPio: '',
+      editBio: '',
       editPic_url: ''
     }
     this.editProfile = this.editProfile.bind(this);
@@ -79,7 +78,7 @@ export default class ProfileBoard extends Component {
   }
 
   _onSubmit() {
-    let { editName, editBirthday, editGender, editEmail, editPhone, editSports, editPio, editPic_url } =this.state;
+    let { editName, editBirthday, editGender, editEmail, editPhone, editSports, editBio, editPic_url } =this.state;
     let editProfile = {
       name: editName,
       birthday: editBirthday,
@@ -87,13 +86,22 @@ export default class ProfileBoard extends Component {
       email: editEmail,
       phone: editPhone,
       sports: editSports,
-      bio: editPio,
+      bio: editBio,
       pic_url: editPic_url
     };
 
-    console.log('editProfile:', editProfile);
+    this.props.updateProfile(editProfile);
 
-    // this.props.updateProfile(editProfile);
+    this.setState({
+      editBirthday: null,
+      editName: '',
+      editGender: '',
+      editEmail: '',
+      editPhone: '',
+      editSports: [],
+      editBio: '',
+      editPic_url: ''
+    })
 
     this.handleClose();
   }

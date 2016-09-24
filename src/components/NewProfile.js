@@ -42,6 +42,7 @@ export default class NewProfile extends Component {
 
   handleOpen() {
     this.setState({ open: true });
+    document.getElementById('addbtn').style.visibility = "hidden";
   }
 
   handleClose() {
@@ -122,7 +123,7 @@ export default class NewProfile extends Component {
     return (
       <div>
         <div className="row">
-          <button className="btn btn-success btn-md" onTouchTap={this.handleOpen}><i className="glyphicon glyphicon-plus"></i></button>
+          <button id ='addbtn' className="btn btn-success btn-md" onTouchTap={this.handleOpen}><i className="glyphicon glyphicon-plus"></i></button>
         </div>
         <Dialog
           title="New Profile"

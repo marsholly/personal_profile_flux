@@ -1,7 +1,8 @@
 import  React, { Component } from 'react';
 import { MuiThemeProvider } from 'material-ui';
 import NewProfile from './NewProfile';
-import ProfileActions from '../actions/ProfileActions'
+import ProfileActions from '../actions/ProfileActions';
+import ProfileStore from  '../stores/ProfileStore';
 
 export default class App extends Component {
   constructor(props) {
@@ -10,6 +11,21 @@ export default class App extends Component {
       profile: []
     }
     this.addNewProfile = this.addNewProfile.bind(this);
+    this._onChange = this._onChange.bind(this);
+  }
+
+  componentWillMount() {
+    ProfileStore.startListening(this._onChange);
+  }
+
+  componentWillUnmount() {
+    ProfileStore.stopListening(this._onChange);
+  }
+
+  _onChange() {
+    this.setState({
+      profile: ProfileStore.getAll()
+    })
   }
 
   addNewProfile(newProfile) {

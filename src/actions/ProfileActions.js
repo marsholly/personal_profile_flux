@@ -1,10 +1,10 @@
 import AppDispatcher from '../AppDispatcher';
 
 const ProfileActions = {
-  createProfile(newProfile) {
+  createProfile(profile) {
     AppDispatcher.dispatch({
       type: 'CREATE_PROFILE',
-      payload: { newProfile }
+      payload: { profile }
     })
   }
 }
